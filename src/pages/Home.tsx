@@ -30,8 +30,6 @@ import { useNavigate } from "react-router-dom";
 import {
   Sun,
   Moon,
-  MoonStar,
-  Globe,
   ArrowRight,
   CheckCircle2,
   Circle,
@@ -50,78 +48,41 @@ import img3 from "../assets/images/img3.jpeg";
    Copy — EN / DE (Hair Care & Professional Styling Focus)
    ──────────────────────────────────────────────────────────────────── */
 
-type Lang = "en" | "de";
-
 const COPY = {
-  en: {
-    eyebrow: "A Digital Home For Craft",
-    heroSub:
-      "Beauty finds you at home. Book a luxury chair, a custom braid sequence, or a trusted stylist you count on — wherever you are.",
-    heroCta: "Find a Stylist",
-    scrollHint: "Scroll to view story",
-    sections: [
-      {
-        title: "The Vision",
-        body: "Every high-end service starts with deep trust. GEZA creates a bridge between discerning clients and the master hands who shape their personal crowns, making scheduling as smooth as silk.",
-      },
-      {
-        title: "The Craft",
-        body: "Braiding is patience made visible, one strand folded deliberately into the next until a perfect geometric crown is formed. We build GEZA with the same micro-precision — honoring the master artisan.",
-      },
-      {
-        title: "The Salon Experience",
-        body: "The finest care shouldn't feel corporate; it should feel intimate, focused, and absolute. GEZA preserves the luxury studio vibe online, ensuring your schedule moves seamlessly along with your creative lookbooks.",
-      },
-    ],
-    ctaTitle: "Opening Doors for Stylists & Clients.",
-    customer: {
-      kicker: "I am looking for elite hair care",
-      body: "Discover leading expert braiders near you, explore portfolios, and secure your session in minutes.",
-      action: "Book a Chair",
+  eyebrow: "A Digital Home For Craft",
+  heroSub:
+    "Beauty finds you at home. Book a luxury chair, a custom braid sequence, or a trusted stylist you count on — wherever you are.",
+  heroCta: "Find a Stylist",
+  scrollHint: "Scroll to view story",
+  sections: [
+    {
+      title: "The Vision",
+      body: "Every high-end service starts with deep trust. GEZA creates a bridge between discerning clients and the master hands who shape their personal crowns, making scheduling as smooth as silk.",
     },
-    hairdresser: {
-      kicker: "I offer professional hair craft",
-      body: "Scale your beauty business. Securely host your scheduling portfolio, deposits, and client list under one home.",
-      action: "Open Your Studio Door",
+    {
+      title: "The Craft",
+      body: "Braiding is patience made visible, one strand folded deliberately into the next until a perfect geometric crown is formed. We build GEZA with the same micro-precision — honoring the master artisan.",
     },
-    footerNote: "GEZA — Exceptional hair artistry, brought directly to you.",
+    {
+      title: "The Salon Experience",
+      body: "The finest care shouldn't feel corporate; it should feel intimate, focused, and absolute. GEZA preserves the luxury studio vibe online, ensuring your schedule moves seamlessly along with your creative lookbooks.",
+    },
+  ],
+  ctaTitle: "Opening Doors for Stylists & Clients.",
+  customer: {
+    kicker: "I am looking for elite hair care",
+    body: "Discover leading expert braiders near you, explore portfolios, and secure your session in minutes.",
+    action: "Book a Chair",
   },
-  de: {
-    eyebrow: "Ein digitales Zuhause für das Handwerk",
-    heroSub:
-      "Schönheit findet dich zu Hause. Buche einen exklusiven Stuhl, ein kunstvolles Flechtdesign oder Hände, denen du vertraust — wo auch immer du bist.",
-    heroCta: "Stylistin finden",
-    scrollHint: "Scrollen für Details",
-    sections: [
-      {
-        title: "Die Vision",
-        body: "Jeder exzellente Service beginnt mit tiefem Vertrauen. GEZA schlägt die Brücke zwischen anspruchsvollen Kunden und den Meisterhänden, die ihre persönliche Krone formen.",
-      },
-      {
-        title: "Das Handwerk",
-        body: "Zöpfe flechten ist sichtbar gewordene Geduld, Strähne für Strähne, bis ein makelloses Ganzes entsteht. Wir bauen GEZA mit genau derselben Präzision — zu Ehren des wahren Handwerks.",
-      },
-      {
-        title: "Das Salon-Erlebnis",
-        body: "Die beste Pflege sollte sich nicht wie ein Geschäft anfühlen, sondern persönlich und absolut verlässlich. GEZA trägt dieses Gefühl zu dir, damit dein Terminkalender reibungslos läuft.",
-      },
-    ],
-    ctaTitle: "Türen öffnen für Stylisten & Kunden.",
-    customer: {
-      kicker: "Ich suche erstklassige Haarpflege",
-      body: "Finde erfahrene Braiderinnen in deiner Nähe, entdecke Portfolios und buche deinen Termin in wenigen Minuten.",
-      action: "Stuhl buchen",
-    },
-    hairdresser: {
-      kicker: "Ich biete mein Handwerk an",
-      body: "Bringe deinen Kalender, dein Portfolio und deine Kundschaft in einem professionellen Zuhause zusammen.",
-      action: "Studio-Tür öffnen",
-    },
-    footerNote: "GEZA — Außergewöhnliche Haarkunst, zu dir gebracht.",
+  hairdresser: {
+    kicker: "I offer professional hair craft",
+    body: "Scale your beauty business. Securely host your scheduling portfolio, deposits, and client list under one home.",
+    action: "Open Your Studio Door",
   },
+  footerNote: "GEZA — Exceptional hair artistry, brought directly to you.",
 } as const;
 
-type Copy = (typeof COPY)[keyof typeof COPY];
+type Copy = typeof COPY;
 
 /* ────────────────────────────────────────────────────────────────────────
    Logo Geometric Mark
@@ -129,28 +90,18 @@ type Copy = (typeof COPY)[keyof typeof COPY];
 
 function GezaMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="GEZA logo mark"
-    >
+    <svg viewBox="0 0 48 48" className={className} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GEZA logo mark">
+      {/* Stylized 'A' with an integrated home/door silhouette */}
       <path
-        d="M4 44 V22 L24 4 L44 22 V44 Z"
+        d="M6 40 L24 6 L42 40 L34 40 L24 20 L14 40 Z"
         stroke="currentColor"
-        strokeWidth="2.25"
+        strokeWidth="2"
         strokeLinejoin="round"
         fill="none"
       />
-      <path
-        d="M18 44 V28 C18 24.5 20.5 22 24 22 C27.5 22 30 24.5 30 28 V44"
-        stroke="currentColor"
-        strokeWidth="2.25"
-        strokeLinejoin="round"
-        fill="none"
-      />
+      {/* Small door cutout centered in the leg of the A */}
+      <rect x="21" y="26" width="6" height="10" rx="1" fill="currentColor" />
+      <circle cx="24" cy="31" r="0.6" fill="#ffffff" opacity="0.9" />
     </svg>
   );
 }
@@ -161,57 +112,28 @@ function GezaMark({ className = "h-8 w-8" }: { className?: string }) {
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const options: { value: "light" | "dark" | "night"; icon: ReactNode; label: string }[] = [
-    { value: "light", icon: <Sun size={14} />, label: "Light" },
-    { value: "dark", icon: <Moon size={14} />, label: "Dark" },
-    { value: "night", icon: <MoonStar size={14} />, label: "Night" },
-  ];
+  const isDark = theme === "dark";
+
+  const handleToggle = () => setTheme(isDark ? "light" : "dark");
+
   return (
-    <div className="flex items-center gap-1 rounded-full border border-stone-800/15 dark:border-amber-50/15 night:border-amber-500/20 p-1">
-      {options.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          aria-pressed={theme === o.value}
-          aria-label={`${o.label} theme`}
-          onClick={() => setTheme(o.value)}
-          className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
-            theme === o.value
-              ? "bg-emerald-800 text-amber-50 night:bg-amber-500 night:text-stone-900"
-              : "text-stone-800/50 hover:text-stone-800 dark:text-amber-50/50 dark:hover:text-amber-50 night:text-amber-50/50 night:hover:text-amber-50"
-          }`}
-        >
-          {o.icon}
-        </button>
-      ))}
-    </div>
+    <button
+      type="button"
+      aria-pressed={isDark}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      onClick={handleToggle}
+      className={`flex h-8 w-8 items-center justify-center rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
+        isDark ? "bg-emerald-800 text-amber-50" : "bg-white text-stone-800/80 dark:bg-stone-800/30"
+      }`}
+    >
+      {isDark ? <Sun size={14} /> : <Moon size={14} />}
+    </button>
   );
 }
 
-function LanguageToggle({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
-  return (
-    <div className="flex items-center gap-1.5 text-xs font-medium tracking-wide">
-      <Globe size={14} className="text-stone-800/50 dark:text-amber-50/50 night:text-amber-500/70" />
-      {(["en", "de"] as Lang[]).map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => setLang(l)}
-          aria-pressed={lang === l}
-          className={`rounded px-1.5 py-0.5 uppercase transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 ${
-            lang === l
-              ? "text-emerald-800 dark:text-amber-400 night:text-amber-500"
-              : "text-stone-800/40 hover:text-stone-800 dark:text-amber-50/40 dark:hover:text-amber-50 night:text-amber-50/40 night:hover:text-amber-50"
-          }`}
-        >
-          {l}
-        </button>
-      ))}
-    </div>
-  );
-}
+/* Language support removed: app is English only. */
 
-function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
+function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 md:px-12">
       <div className="flex items-center gap-2 text-stone-900 dark:text-amber-50 night:text-amber-50">
@@ -219,8 +141,6 @@ function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
         <span className="font-serif text-lg tracking-[0.15em]">GEZA</span>
       </div>
       <div className="flex items-center gap-4">
-        <LanguageToggle lang={lang} setLang={setLang} />
-        <span className="h-4 w-px bg-stone-800/15 dark:bg-amber-50/15 night:bg-amber-500/20" />
         <ThemeToggle />
       </div>
     </header>
@@ -311,7 +231,25 @@ function DoorPanel({
   index: number;
   registerRef: (i: number, mesh: THREE.Mesh | null) => void;
 }) {
-  const geometry = useMemo(() => new THREE.ShapeGeometry(doorShape()), []);
+  const geometry = useMemo(() => {
+    const geo = new THREE.ShapeGeometry(doorShape());
+    // Ensure UVs are mapped relative to the geometry bounding box so textures keep aspect
+    geo.computeBoundingBox();
+    const bbox = geo.boundingBox!;
+    const size = new THREE.Vector3();
+    bbox.getSize(size);
+
+    const pos = geo.attributes.position;
+    const uvs = new Float32Array((pos.count || pos.array.length / 3) * 2);
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      uvs[i * 2] = size.x > 0 ? (x - bbox.min.x) / size.x : 0.5;
+      uvs[i * 2 + 1] = size.y > 0 ? (y - bbox.min.y) / size.y : 0.5;
+    }
+    geo.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+    return geo;
+  }, []);
   const images = [img1, img2, img3];
   const texture = useTexture(images[index] || img1);
 
@@ -356,14 +294,16 @@ function SceneRig({
 
       const material = mesh.material as THREE.MeshBasicMaterial;
       material.opacity = THREE.MathUtils.lerp(0, 1, focus);
-      mesh.position.z = THREE.MathUtils.lerp(-7, 1.4, focus);
-      mesh.position.x = reduceMotion ? 0 : dist * 2.1;
-      mesh.rotation.y = reduceMotion ? 0 : dist * 0.22;
-      mesh.scale.setScalar(THREE.MathUtils.lerp(0.82, 1, focus));
+      // soften z-range to avoid popping and extreme perspective stretching
+      mesh.position.z = THREE.MathUtils.lerp(-4, 1.4, focus);
+      // reduce lateral and rotational motion so textures maintain aspect
+      mesh.position.x = reduceMotion ? 0 : dist * 1.2;
+      mesh.rotation.y = reduceMotion ? 0 : dist * 0.12;
+      mesh.scale.setScalar(THREE.MathUtils.lerp(0.9, 1, focus));
     }
 
     if (groupRef.current && !reduceMotion) {
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.06) * 0.015;
+      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.06) * 0.012;
     }
   });
 
@@ -394,7 +334,7 @@ function ScrollStory({ copy }: { copy: Copy }) {
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
-          <Canvas camera={{ position: [0, 0, 6], fov: 45 }} dpr={[1, 1.5]}>
+          <Canvas camera={{ position: [0, 0, 5], fov: 40 }} dpr={[1, 1.5]}>
             <ambientLight intensity={0.9} />
             <Suspense fallback={null}>
               <SceneRig
@@ -630,8 +570,7 @@ function Footer({ copy }: { copy: Copy }) {
 }
 
 export default function GezaLandingPage() {
-  const [lang, setLang] = useState<Lang>("en");
-  const copy = COPY[lang];
+  const copy = COPY;
   const ctx = useContext(ConsoleContext);
 
   const triggerPulse = () => {
@@ -641,7 +580,7 @@ export default function GezaLandingPage() {
   return (
     <ConsoleProvider>
       <div className="min-h-screen bg-amber-50/20 font-sans dark:bg-stone-900 night:bg-[#0a0908]">
-        <Navbar lang={lang} setLang={setLang} />
+        <Navbar />
         <Hero copy={copy} />
         <ScrollStory copy={copy} />
         <CtaCards copy={copy} onInteract={triggerPulse} />

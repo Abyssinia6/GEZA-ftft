@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Tailwind v4 custom variant definition */
+@variant night (&:where(.night, [data-theme="night"] *));

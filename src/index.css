@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@variant night (&:where(.night, [data-theme="night"] *));
 :root {
   --bg-color: #ffffff;
   --text-color: #1a1a1a;
